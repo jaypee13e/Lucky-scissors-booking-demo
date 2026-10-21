@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hartley &amp; Sons Barbers – Book online</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#0B0A08;--surface:#17140E;--ink:#F6EFE0;--muted:#A89F8A;--line:#2E281D;--red:#D4A83C;--red-ink:#14110A;--blue:#D8453B;--ok:#6FCF97;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0A08;--surface:#17140E;--ink:#F6EFE0;--muted:#A89F8A;--line:#2E281D;--red:#D4A83C;--red-ink:#14110A;--blue:#D8453B;--ok:#6FCF97}}
+:root[data-theme="dark"]{--bg:#0B0A08;--surface:#17140E;--ink:#F6EFE0;--muted:#A89F8A;--line:#2E281D;--red:#D4A83C;--red-ink:#14110A;--blue:#D8453B;--ok:#6FCF97}
+*{box-sizing:border-box}
+html,body{margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;margin:0;line-height:1.05}
+.pole{height:14px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,#fff 14px 28px,var(--blue) 28px 42px,#fff 42px 56px)}
+header{max-width:720px;margin:0 auto;padding:28px 20px 8px}
+header h1{font-size:clamp(2.4rem,9vw,4rem);font-weight:800;letter-spacing:-.02em}
+header p{color:var(--muted);margin:10px 0 0;max-width:46ch}
+nav{max-width:720px;margin:16px auto 0;padding:0 20px;display:flex;gap:8px}
+nav button{font:inherit;font-weight:700;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+nav button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{max-width:720px;margin:0 auto;padding:20px}
+section{margin-bottom:28px}
+h2{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.list{display:grid;gap:8px}
+.svc{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:14px 16px;cursor:pointer}
+.svc small{display:block;color:var(--muted)}
+.svc b{font-size:1.1rem}
+.svc[aria-pressed="true"]{border-color:var(--red)}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.day{flex:0 0 auto;min-width:64px;text-align:center;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:8px 6px;cursor:pointer}
+.day span{display:block;font-size:.8rem;color:var(--muted)}
+.day b{font-size:1.3rem;font-family:"Bricolage Grotesque",sans-serif}
+.day[aria-pressed="true"]{border-color:var(--red)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.slot{font:inherit;font-weight:500;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:10px 0;cursor:pointer}
+.slot[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:var(--red-ink)}
+.slot:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+label{display:block;font-weight:700;margin-bottom:12px}
+input{display:block;width:100%;margin-top:4px;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:12px}
+.cta{width:100%;font:inherit;font-weight:700;font-size:1.05rem;background:var(--red);color:var(--red-ink);border:0;border-radius:10px;padding:15px;cursor:pointer}
+.cta:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.msg{background:var(--surface);border:2px solid var(--ok);border-radius:10px;padding:16px}
+.err{color:var(--red);font-weight:700;min-height:1.5em;margin:0 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.card small{color:var(--muted);display:block}
+.card button{font:inherit;color:var(--red);background:none;border:1px solid var(--red);border-radius:8px;padding:6px 12px;cursor:pointer}
+.empty{color:var(--muted)}.demo{background:var(--ink);color:var(--bg);font-size:.85rem;text-align:center;padding:8px 16px}.err{color:#FF8A80}.chip{font:inherit;font-weight:500;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;white-space:nowrap}.chip[aria-pressed="true"]{border-color:var(--red)}.sms{font-size:.9rem;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+footer{max-width:720px;margin:0 auto;padding:0 20px 32px;color:var(--muted);font-size:.9rem}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="pole" aria-hidden="true"></div>
+<div class="demo" role="note">Concept demo only. Not the official Lucky Scissors booking page. Services are from their Instagram; prices, hours and barbers are placeholders.</div>
+<header>
+  <h1 id="bizname"></h1>
+  <p>Walk-ins are always welcome. Book a time instead and skip the wait. Open 7 days.</p>
+</header>
+<nav aria-label="View">
+  <button id="tabBook" aria-pressed="true">Book a visit</button>
+  <button id="tabAdmin" aria-pressed="false">Owner view</button>
+</nav>
+<main>
+  <div id="book">
+    <section><h2>Choose a service</h2><div class="list" id="services"></div></section>
+    <section><h2>Choose a barber</h2><div class="days" id="staff"></div></section>
+    <section><h2>Choose a day</h2><div class="days" id="days"></div></section>
+    <section><h2>Choose a time</h2><div class="slots" id="slots"></div></section>
+    <section id="form">
+      <h2>Your details</h2>
+      <label>Name<input id="name" autocomplete="name"></label>
+      <label>Mobile number<input id="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx"></label>
+      <p class="err" id="err" role="alert"></p>
+      <button class="cta" id="go">Confirm booking</button>
+    </section>
+    <div class="msg" id="done" hidden></div>
+  </div>
+  <div id="lock" hidden><section><h2>Owner login</h2><label>PIN<input id="pin" type="password" inputmode="numeric" autocomplete="off"></label><p class="err" id="pinerr" role="alert"></p><button class="cta" id="unlock">Open owner view</button></section></div>
+  <div id="admin" hidden>
+    <section><h2>Upcoming bookings</h2><p class="empty" id="sum"></p><div class="list" id="bookings"></div></section>
+  </div>
+</main>
+<footer id="foot"></footer>
+<script>
+/* ===== EDIT THIS BLOCK FOR EACH CLIENT ===== */
+const BIZ={name:"Lucky Scissors",suburb:"Kwinana Town Centre WA",address:"Kwinana Town Centre, WA",abn:"",
+ closed:[],open:9,close:18,pin:"1234",
+ staff:["Lucky","Barber 2"],
+ services:[{id:"cut",name:"Men's haircut",mins:30,price:35},{id:"kids",name:"Kids' haircut",mins:30,price:25},{id:"beard",name:"Beard trim",mins:30,price:20},{id:"shave",name:"Shave",mins:30,price:30},{id:"combo",name:"Haircut and beard trim",mins:60,price:50}]};
+/* =========================================== */
+const KEY="biz-bookings-v2",$=id=>document.getElementById(id);
+let bookings=[];try{bookings=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(bookings))}catch(e){}};
+const sel={svc:null,staff:"any",date:null,time:null};
+const SL=[];for(let m=BIZ.open*60;m<BIZ.close*60;m+=30)SL.push(m);
+const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const pretty=s=>new Date(s+"T00:00").toLocaleDateString("en-AU",{weekday:"short",day:"numeric",month:"short"});
+const lab=m=>{const h=Math.floor(m/60),mm=m%60;return(h>12?h-12:h)+":"+String(mm).padStart(2,"0")+(h>=12?" pm":" am")};
+const money=n=>"$"+n.toFixed(2);
+const svcOf=id=>BIZ.services.find(v=>v.id===id);
+const need=s=>Math.ceil(svcOf(s).mins/30);
+function busy(st,date,m){return bookings.some(x=>x.staff===st&&x.date===date&&m>=x.start&&m<x.start+need(x.svc)*30)}
+function freeStaff(date,m){
+  if(!sel.svc)return[];const n=need(sel.svc);
+  const pool=sel.staff==="any"?BIZ.staff:[sel.staff];
+  return pool.filter(st=>{for(let i=0;i<n;i++){const t=m+i*30;if(t>=BIZ.close*60||busy(st,date,t))return false}return true});
+}
+function days(){const o=[],d=new Date();d.setHours(0,0,0,0);
+  while(o.length<12){if(!BIZ.closed.includes(d.getDay()))o.push(new Date(d));d.setDate(d.getDate()+1)}return o}
+function btn(cls,html,pressed,fn){const b=document.createElement("button");b.className=cls;b.innerHTML=html;if(pressed!==null)b.setAttribute("aria-pressed",pressed);b.onclick=fn;return b}
+function renderServices(){const el=$("services");el.innerHTML="";
+  BIZ.services.forEach(s=>el.appendChild(btn("svc",`<span>${s.name}<small>${s.mins} min</small></span><b>${money(s.price)}</b>`,sel.svc===s.id,()=>{sel.svc=s.id;sel.time=null;renderServices();renderSlots()})))}
+function renderStaff(){const el=$("staff");el.innerHTML="";
+  ["any",...BIZ.staff].forEach(n=>el.appendChild(btn("chip",n==="any"?"Any barber":n,sel.staff===n,()=>{sel.staff=n;sel.time=null;renderStaff();renderSlots()})))}
+function renderDays(){const el=$("days");el.innerHTML="";const t=iso(new Date());
+  days().forEach((d,i)=>{const k=iso(d);
+    el.appendChild(btn("day",`<span>${i===0&&k===t?"Today":d.toLocaleDateString("en-AU",{weekday:"short"})}</span><b>${d.getDate()}</b><span>${d.toLocaleDateString("en-AU",{month:"short"})}</span>`,sel.date===k,()=>{sel.date=k;sel.time=null;renderDays();renderSlots()}))})}
+function renderSlots(){const el=$("slots");el.innerHTML="";
+  if(!sel.svc||!sel.date){el.innerHTML='<p class="empty">Choose a service and a day to see open times.</p>';return}
+  const now=new Date(),isToday=sel.date===iso(now),nowM=now.getHours()*60+now.getMinutes()+60;
+  let any=false;
+  SL.forEach(m=>{if(isToday&&m<nowM)return;const ok=freeStaff(sel.date,m).length>0;if(ok)any=true;
+    const b=btn("slot",lab(m),sel.time===m,()=>{sel.time=m;renderSlots()});b.disabled=!ok;el.appendChild(b)});
+  if(!any)el.innerHTML='<p class="empty">Fully booked this day. Try another day'+(sel.staff!=="any"?" or choose Any barber":"")+'.</p>'}
+function renderAdmin(){
+  const list=[...bookings].sort((a,b)=>(a.date+String(a.start).padStart(4,"0")).localeCompare(b.date+String(b.start).padStart(4,"0")));
+  const total=list.reduce((t,x)=>t+svcOf(x.svc).price,0);
+  $("sum").textContent=list.length?`${list.length} booking${list.length>1?"s":""} · ${money(total)} booked`:"";
+  const el=$("bookings");el.innerHTML=list.length?"":'<p class="empty">No bookings yet. Make one on the Book a visit tab.</p>';
+  list.forEach(x=>{const s=svcOf(x.svc),c=document.createElement("div");c.className="card";
+    c.innerHTML="<div><b></b><small></small></div><button>Cancel</button>";
+    c.querySelector("b").textContent=`${pretty(x.date)}, ${lab(x.start)} with ${x.staff}`;
+    c.querySelector("small").textContent=`${x.name} · ${x.phone} · ${s.name} · ${money(s.price)}`;
+    c.querySelector("button").onclick=()=>{bookings=bookings.filter(y=>y.id!==x.id);save();renderAdmin();renderSlots()};
+    el.appendChild(c)})}
+function show(t){const a=t==="admin";
+  if(a&&!sessionStorageOK.unlocked){$("lock").hidden=false;$("book").hidden=true;$("admin").hidden=true}
+  else{$("lock").hidden=true;$("book").hidden=a;$("admin").hidden=!a;if(a)renderAdmin()}
+  $("tabBook").setAttribute("aria-pressed",!a);$("tabAdmin").setAttribute("aria-pressed",a)}
+const sessionStorageOK={unlocked:false};
+$("tabBook").onclick=()=>show("book");$("tabAdmin").onclick=()=>show("admin");
+$("unlock").onclick=()=>{if($("pin").value===BIZ.pin){sessionStorageOK.unlocked=true;$("pinerr").textContent="";show("admin")}else $("pinerr").textContent="Wrong PIN. The demo PIN is "+BIZ.pin+"."};
+function auPhone(v){let d=v.replace(/[^\d+]/g,"");if(d.startsWith("+61"))d="0"+d.slice(3);else if(d.startsWith("61")&&d.length===11)d="0"+d.slice(2);
+  if(/^04\d{8}$/.test(d))return d.replace(/(\d{4})(\d{3})(\d{3})/,"$1 $2 $3");
+  if(/^0[2378]\d{8}$/.test(d))return d.replace(/(\d{2})(\d{4})(\d{4})/,"$1 $2 $3");return null}
+$("go").onclick=()=>{const err=m=>{$("err").textContent=m};
+  const name=$("name").value.trim(),ph=auPhone($("phone").value);
+  if(!sel.svc)return err("Choose a service.");if(!sel.date)return err("Choose a day.");if(sel.time===null)return err("Choose a time.");
+  if(!name)return err("Enter your name.");if(!ph)return err("Enter an Australian mobile (04xx xxx xxx) or landline number.");
+  const st=freeStaff(sel.date,sel.time)[0];if(!st){sel.time=null;renderSlots();return err("That time was just taken. Choose another.")}
+  err("");const s=svcOf(sel.svc);
+  bookings.push({id:Date.now(),svc:sel.svc,staff:st,date:sel.date,start:sel.time,name,phone:ph});save();
+  const d=$("done");d.hidden=false;d.innerHTML="<h3></h3><p></p><p class='sms'></p>";
+  d.querySelector("h3").textContent="You're booked, "+name.split(" ")[0]+".";
+  d.querySelector("p").textContent=`${s.name} with ${st}, ${pretty(sel.date)} at ${lab(sel.time)}. ${money(s.price)}, pay in the shop. Walk-ins are still welcome.`;
+  d.querySelector(".sms").textContent=`Text sent to ${ph}: Hi ${name.split(" ")[0]}, you're booked at ${BIZ.name} on ${pretty(sel.date)} at ${lab(sel.time)}. Reply C to cancel.`;
+  sel.time=null;$("name").value="";$("phone").value="";renderSlots();d.scrollIntoView({behavior:"smooth",block:"center"})};
+document.title=BIZ.name+" – Book online";$("bizname").textContent=BIZ.name;
+$("foot").textContent=`${BIZ.address} · Open 7 days (hours shown are placeholders, ${lab(BIZ.open*60)} to ${lab(BIZ.close*60)}) · Perth time · Demo: bookings stay in this browser.`;
+renderServices();renderStaff();renderDays();renderSlots();show("book");
+</script>
+</body>
+</html>
